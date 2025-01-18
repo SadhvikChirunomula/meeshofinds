@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ridhima's Finds</title>
+    <style>
+        /* Root variables for light/dark themes */
+        :root {
+            --bg-color: #f8f9fa;
+            --text-color: #333;
+            --card-bg: #fff;
+            --card-shadow: rgba(0, 0, 0, 0.1);
+            --navbar-bg: #007BFF;
+            --navbar-text: #fff;
+            --accent-color: #0056b3;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #121212;
+            --text-color: #e4e4e4;
+            --card-bg: #1e1e1e;
+            --card-shadow: rgba(0, 0, 0, 0.6);
+            --navbar-bg: #1f2937;
+            --navbar-text: #e4e4e4;
+            --accent-color: #3b82f6;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: var(--navbar-bg);
+            color: var(--navbar-text);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px var(--card-shadow);
+        }
+
+        .navbar h1 {
+            margin: 0;
+            font-size: 1.8rem;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: var(--navbar-text);
+            background-color: var(--accent-color);
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .navbar a:hover {
+            background-color: darken(var(--accent-color), 10%);
+        }
+
+        /* Theme Toggle Button */
+        .theme-toggle {
+            background: none;
+            border: 2px solid var(--navbar-text);
+            color: var(--navbar-text);
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .theme-toggle:hover {
+            background: var(--navbar-text);
+            color: var(--navbar-bg);
+        }
+
+        /* Main Section */
+        .main {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .tagline {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--text-color);
+            font-weight: 500;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: 0 6px 15px var(--card-shadow);
+        }
+
+        .card {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 6px 12px var(--card-shadow);
+            background-color: var(--card-bg);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px var(--card-shadow);
+        }
+
+        .card img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            margin: 20px auto;
+            border-radius: 10px;
+        }
+
+        .card a {
+            text-decoration: none;
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            font-weight: bold;
+            display: block;
+            padding: 15px;
+            margin-top: 10px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .card a:hover {
+            color: darken(var(--accent-color), 10%);
+        }
+
+        /* Instagram Button */
+        .instagram-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #E4405F;
+            color: #fff;
+            text-decoration: none;
+            padding: 15px 20px;
+            border-radius: 50px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .instagram-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        footer {
+            margin: 20px 0;
+            text-align: center;
+            color: var(--text-color);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: darken(var(--accent-color), 10%);
+        }
+
+        @media (max-width: 600px) {
+            .navbar h1 {
+                font-size: 1.5rem;
+            }
+
+            .card a {
+                font-size: 1rem;
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <h1>Ridhima's Finds</h1>
+        <div>
+            <button class="theme-toggle" id="themeToggle">🌙 Dark Mode</button>
+            <a href="https://www.instagram.com/juzzrandomm/" target="_blank">Instagram</a>
+        </div>
+    </div>
+
+    <!-- Main Section -->
+    <div class="main">
+        <p class="tagline">Discover the best Meesho finds and affordable online shopping treasures!</p>
+        <h1>Ridhima's Finds</h1>
+        <div class="grid" id="productGrid"></div>
+    </div>
+
+    <!-- Instagram Button -->
+    <a href="https://www.instagram.com/juzzrandomm/" target="_blank" class="instagram-btn">
+        <i>📷</i> Instagram
+    </a>
+
+    <!-- Footer -->
+    <footer>
+        Powered by <a href="https://www.instagram.com/juzzrandomm/">Ridhima</a>. Happy Shopping!
+    </footer>
+
+    <script>
+        // Load products from JSON
+        fetch('data.json')
+            .then(response => response.json())
+            .then(products => {
+                const grid = document.getElementById('productGrid');
+
+                products.forEach(product => {
+                    const card = document.createElement('div');
+                    card.className = 'card';
+
+                    card.innerHTML = `
+                        <img src="${product.image}" alt="${product.title}">
+                        <a href="${product.link}" target="_blank">${product.title}</a>
+                    `;
+
+                    grid.appendChild(card);
+                });
+            })
+            .catch(error => console.error('Error loading JSON:', error));
+
+        // Theme toggle
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', () => {
+            const theme = document.documentElement.getAttribute('data-theme');
+            if (theme === 'dark') {
+                document.documentElement.removeAttribute('data-theme');
+                themeToggle.textContent = '🌙 Dark Mode';
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                themeToggle.textContent = '☀️ Light Mode';
+            }
+        });
+    </script>
+</body>
+
+</html>
